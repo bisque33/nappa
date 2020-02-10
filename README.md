@@ -2,6 +2,8 @@
 
 nappa is a command tool that converts various formats to [vegeta](https://github.com/tsenart/vegeta) input format.
 
+![Go](https://github.com/bisque33/nappa/workflows/Go/badge.svg?branch=master)
+
 ## Install
 
 ```
