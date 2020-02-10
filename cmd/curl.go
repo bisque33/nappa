@@ -68,12 +68,16 @@ var curlCmd = &cobra.Command{
 		if data, _ := cmd.PersistentFlags().GetString("data-urlencode"); data != "" {
 			body = base64.StdEncoding.EncodeToString([]byte(data))
 		}
+		// Default is GET, but POST if data exists
+		if method == "GET" && body != "" {
+			method = "POST"
+		}
 
 		type JSONSchema struct {
 			Method string              `json:"method"`
 			URL    string              `json:"url"`
-			Header map[string][]string `json:"header,omitempty"` // TODO: custom schema
-			Body   string              `json:"body,omitempty"`   // TODO: base64
+			Header map[string][]string `json:"header,omitempty"`
+			Body   string              `json:"body,omitempty"`
 		}
 		group := JSONSchema{
 			Method: method,
@@ -92,8 +96,8 @@ var curlCmd = &cobra.Command{
 }
 
 func init() {
-	curlCmd.PersistentFlags().StringP("request", "X", "GET", "method")
-	curlCmd.PersistentFlags().StringArrayP("header", "H", []string{}, "headers")
+	curlCmd.PersistentFlags().StringP("request", "X", "GET", "Specify request command to use")
+	curlCmd.PersistentFlags().StringArrayP("header", "H", []string{}, "Pass custom header(s) to server")
 	curlCmd.PersistentFlags().StringP("data", "d", "", "HTTP POST data")
 	curlCmd.PersistentFlags().StringP("data-ascii", "", "", "HTTP POST ASCII data")
 	curlCmd.PersistentFlags().StringP("data-binary", "", "", "HTTP POST binary data")
