@@ -21,9 +21,9 @@ Flags:
       --data-binary string      HTTP POST binary data
       --data-raw string         HTTP POST data, '@' allowed
       --data-urlencode string   HTTP POST data url encoded
-  -H, --header stringArray      headers
+  -H, --header stringArray      Pass custom header(s) to server
   -h, --help                    help for curl
-  -X, --request string          method (default "GET")
+  -X, --request string          Specify request command to use (default "GET")
 ```
 
 example
