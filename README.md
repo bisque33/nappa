@@ -2,6 +2,12 @@
 
 nappa is a command tool that converts various formats to [vegeta](https://github.com/tsenart/vegeta) input format.
 
+## Install
+
+```
+$ go get github.com/bisque33/nappa
+```
+
 ## Usage
 
 ### curl
